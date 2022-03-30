@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .bigbox {
+            width: 600px;
+            margin: 100px auto;
+        }
+        
+        ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        ul li {
+            width: 200px;
+            font-size: 70px;
+            background-color: skyblue;
+            text-align: center;
+            cursor: pointer;
+        }
+        
+        ul li.active {
+            background-color: powderblue;
+        }
+        
+        .bigbox div {
+            display: none;
+        }
+        
+        div.bigbox>div.active {
+            text-align: center;
+            display: block;
+            line-height: 400px;
+            font-size: 100px;
+            height: 400px;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bigbox">
+        <ul>
+            <li class="active">1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+        <div class="active">1</div>
+        <div>2</div>
+        <div>3</div>
+    </div>
+    <script>
+        var btns = document.querySelectorAll('div.bigbox ul li');
+        var conts = document.querySelectorAll('div.bigbox>div');
+        // console.log(btns, conts);
+        for (var i = 0; i < btns.length; i++) {
+            btns[i].myIndex = i;
+            btns[i].onclick = function() {
+                var i = this.myIndex;
+                change(i);
+            }
+        }
+
+        function change(index) {
+            for (var i = 0; i < btns.length; i++) {
+                btns[i].className = '';
+                conts[i].className = '';
+            }
+            btns[index].className = 'active';
+            conts[index].className = 'active';
+        }
+    </script>
+</body>
+
+</html>
